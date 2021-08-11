@@ -1,9 +1,6 @@
 <template>
-    <button
-        class="py-2 w-28 m-2 font-semibold rounded-lg transition duration-200 cursor-pointer"
-        @click="onClick()"
-    >
-        {{ buttonText }}
+    <button class="py-2 px-7 m-2 font-semibold rounded-lg transition duration-200 cursor-pointer">
+        {{ text }}
     </button>
 </template>
 
@@ -17,25 +14,6 @@ export default Vue.extend({
             type: String,
             required: true,
             default: 'Button',
-        },
-        clicked: {
-            type: String,
-            required: false,
-            default: '✓',
-        },
-    },
-    data() {
-        return {
-            buttonText: this.text,
-        };
-    },
-    methods: {
-        onClick() {
-            if (this.buttonText === this.clicked) return;
-            this.buttonText = this.clicked;
-            setTimeout(() => {
-                this.buttonText = this.text;
-            }, 1000);
         },
     },
 });

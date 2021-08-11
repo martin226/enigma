@@ -19,7 +19,6 @@
                 <Btn
                     class="bg-white text-gray-800 hover:bg-gray-300"
                     text="Generate"
-                    clicked="Generated!"
                     @click.native="
                         generatePassword();
                         bounceAnimation($event);
@@ -28,7 +27,6 @@
                 <Btn
                     class="bg-white text-gray-800 hover:bg-gray-300"
                     text="Copy"
-                    clicked="Copied!"
                     @click.native="
                         copyPassword();
                         bounceAnimation($event);
