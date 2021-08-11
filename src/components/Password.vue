@@ -2,6 +2,7 @@
     <input
         type="text"
         spellcheck="false"
+        placeholder="Enter a password"
         :value="value"
         class="
             text-center text-3xl
@@ -32,3 +33,18 @@ export default Vue.extend({
     },
 });
 </script>
+
+<style scoped>
+::placeholder {
+    color: rgba(233, 233, 233, 0.75);
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: rgba(233, 233, 233, 0.75);
+}
+
+::-ms-input-placeholder {
+    color: rgba(233, 233, 233, 0.75);
+}
+</style>
