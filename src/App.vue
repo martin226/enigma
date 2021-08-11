@@ -1,10 +1,9 @@
 <template>
-    <div id="app" class="flex flex-col min-h-screen">
+    <div id="app" class="flex flex-col h-screen">
         <div
-            ref="passwordSection"
             class="
                 py-16
-                h-2/5
+                h-full
                 flex flex-col
                 gap-4
                 justify-center
@@ -35,7 +34,7 @@
                 />
             </div>
         </div>
-        <div class="grid grid-cols-1 xl:grid-cols-2 p-10 h-3/5 bg-gray-100">
+        <div class="grid grid-cols-1 xl:grid-cols-2 p-10 h-full bg-gray-100">
             <div>
                 <div v-if="passwordInfo.password !== undefined">
                     <PasswordInfo :password-info="passwordInfo" />
