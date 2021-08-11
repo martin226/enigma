@@ -5,7 +5,7 @@
         placeholder="Enter a password"
         :value="value"
         class="
-            text-center text-3xl
+            text-center text-4xl
             sm:text-5xl
             md:text-6xl
             lg:text-7xl
