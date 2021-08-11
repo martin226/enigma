@@ -1,8 +1,9 @@
 <template>
-    <div id="app" class="flex flex-col text-center h-screen">
+    <div id="app" class="flex flex-col min-h-screen">
         <div
             ref="passwordSection"
             class="
+                py-16
                 h-2/5
                 flex flex-col
                 gap-4
@@ -34,6 +35,16 @@
                 />
             </div>
         </div>
+        <div class="grid grid-cols-1 xl:grid-cols-2 p-10 h-3/5 bg-gray-100">
+            <div>
+                <div v-if="passwordInfo.password !== undefined">
+                    <PasswordInfo :password-info="passwordInfo" />
+                </div>
+            </div>
+            <div>
+                <!-- TODO -->
+            </div>
+        </div>
     </div>
 </template>
 
@@ -43,6 +54,7 @@ import zxcvbn from 'zxcvbn';
 import debounce from 'lodash.debounce';
 import Btn from './components/Button.vue';
 import Password from './components/Password.vue';
+import PasswordInfo from './components/PasswordInfo.vue';
 import { GeneratePassword } from './lib/generator';
 import copyTextToClipboard from './lib/clipboard';
 
@@ -51,6 +63,7 @@ export default Vue.extend({
     components: {
         Btn,
         Password,
+        PasswordInfo,
     },
     data() {
         return {
@@ -60,17 +73,20 @@ export default Vue.extend({
             lowerCase: true,
             digits: true,
             specialChars: true,
-            strength: 4,
+            passwordInfo: {
+                score: 4,
+            },
         };
     },
     computed: {
         classObject(): { [key: string]: boolean } {
+            const strength = this.passwordInfo.score;
             return {
-                'bg-red-700': this.strength === 0,
-                'bg-red-800': this.strength === 1,
-                'bg-yellow-700': this.strength === 2,
-                'bg-green-700': this.strength === 3,
-                'bg-green-800': this.strength === 4,
+                'bg-red-700': strength === 0,
+                'bg-red-800': strength === 1,
+                'bg-yellow-700': strength === 2,
+                'bg-green-700': strength === 3,
+                'bg-green-800': strength === 4,
             };
         },
     },
@@ -78,7 +94,7 @@ export default Vue.extend({
         password(newPassword) {
             debounce(() => {
                 const passwordInfo = zxcvbn(newPassword);
-                this.strength = passwordInfo.score;
+                this.passwordInfo = passwordInfo;
             }, 100)();
         },
     },
