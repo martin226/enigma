@@ -28,7 +28,7 @@
                     text="Copy"
                     clicked="Copied!"
                     @click.native="
-                        generatePassword();
+                        copyPassword();
                         bounceAnimation($event);
                     "
                 />
