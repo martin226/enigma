@@ -4,13 +4,15 @@
             ref="passwordSection"
             class="
                 h-2/5
-                bg-green-800
                 flex flex-col
                 gap-4
                 justify-center
                 items-center
                 text-white text-center
+                transition-colors
+                duration-500
             "
+            :class="classObject"
         >
             <Password ref="password" v-model="password" />
             <div class="mt-6">
@@ -63,12 +65,22 @@ export default Vue.extend({
             strength: 4,
         };
     },
+    computed: {
+        classObject(): { [key: string]: boolean } {
+            return {
+                'bg-red-700': this.strength === 0,
+                'bg-red-800': this.strength === 1,
+                'bg-yellow-700': this.strength === 2,
+                'bg-green-700': this.strength === 3,
+                'bg-green-800': this.strength === 4,
+            };
+        },
+    },
     watch: {
         password(newPassword) {
             debounce(() => {
                 const passwordInfo = zxcvbn(newPassword);
                 this.strength = passwordInfo.score;
-                this.strengthColour();
             }, 100)();
         },
     },
@@ -97,40 +109,6 @@ export default Vue.extend({
             const el = event.target as HTMLElement;
             el.classList.add('bounce');
             setTimeout(() => el.classList.remove('bounce'), 1000);
-        },
-        setColour(colour: string) {
-            const passwordSection = this.$refs.passwordSection as Vue & {
-                classList: Element['classList'];
-            };
-            // Remove existing colours
-            for (let i = 0; i < passwordSection.classList.length; i += 1) {
-                if (passwordSection.classList[i].startsWith('bg-')) {
-                    passwordSection.classList.remove(passwordSection.classList[i]);
-                }
-            }
-            passwordSection.classList.add(colour);
-        },
-        strengthColour() {
-            switch (this.strength) {
-                case 0:
-                    this.setColour('bg-red-800');
-                    break;
-                case 1:
-                    this.setColour('bg-red-700');
-                    break;
-                case 2:
-                    this.setColour('bg-yellow-700');
-                    break;
-                case 3:
-                    this.setColour('bg-green-700');
-                    break;
-                case 4:
-                    this.setColour('bg-green-800');
-                    break;
-                default:
-                    this.setColour('bg-green-800');
-                    break;
-            }
         },
     },
 });
