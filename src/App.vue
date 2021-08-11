@@ -1,6 +1,7 @@
 <template>
     <div id="app" class="flex flex-col text-center h-screen">
         <div
+            ref="passwordSection"
             class="
                 h-2/5
                 bg-green-800
@@ -38,6 +39,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import zxcvbn from 'zxcvbn';
+import debounce from 'lodash.debounce';
 import Btn from './components/Button.vue';
 import Password from './components/Password.vue';
 import { GeneratePassword } from './lib/generator';
@@ -57,7 +60,17 @@ export default Vue.extend({
             lowerCase: true,
             digits: true,
             specialChars: true,
+            strength: 4,
         };
+    },
+    watch: {
+        password(newPassword) {
+            debounce(() => {
+                const passwordInfo = zxcvbn(newPassword);
+                this.strength = passwordInfo.score;
+                this.strengthColour();
+            }, 100)();
+        },
     },
     mounted() {
         this.generatePassword();
@@ -84,6 +97,40 @@ export default Vue.extend({
             const el = event.target as HTMLElement;
             el.classList.add('bounce');
             setTimeout(() => el.classList.remove('bounce'), 1000);
+        },
+        setColour(colour: string) {
+            const passwordSection = this.$refs.passwordSection as Vue & {
+                classList: Element['classList'];
+            };
+            // Remove existing colours
+            for (let i = 0; i < passwordSection.classList.length; i += 1) {
+                if (passwordSection.classList[i].startsWith('bg-')) {
+                    passwordSection.classList.remove(passwordSection.classList[i]);
+                }
+            }
+            passwordSection.classList.add(colour);
+        },
+        strengthColour() {
+            switch (this.strength) {
+                case 0:
+                    this.setColour('bg-red-800');
+                    break;
+                case 1:
+                    this.setColour('bg-red-700');
+                    break;
+                case 2:
+                    this.setColour('bg-yellow-700');
+                    break;
+                case 3:
+                    this.setColour('bg-green-700');
+                    break;
+                case 4:
+                    this.setColour('bg-green-800');
+                    break;
+                default:
+                    this.setColour('bg-green-800');
+                    break;
+            }
         },
     },
 });
