@@ -4,7 +4,8 @@ const GeneratePassword = (
     lowerCase: boolean,
     digits: boolean,
     specialChars: boolean,
-    noSimilarChars: boolean
+    noSimilarChars: boolean,
+    uniqueChars: boolean
 ): string => {
     let password = '';
     let chars = '';
@@ -29,7 +30,18 @@ const GeneratePassword = (
         return password;
     }
     for (let i = 0; i < length; i += 1) {
-        password += chars[Math.floor(Math.random() * chars.length)];
+        if (!uniqueChars) {
+            password += chars[Math.floor(Math.random() * chars.length)];
+        } else {
+            for (;;) {
+                const index = Math.floor(Math.random() * chars.length);
+                const char = chars[index];
+                if (password.indexOf(char) === -1) {
+                    password += char;
+                    break;
+                }
+            }
+        }
     }
     return password;
 };

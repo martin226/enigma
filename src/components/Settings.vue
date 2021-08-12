@@ -51,6 +51,14 @@
                 :class="settingsStyles"
             /><span class="ml-2 text-gray-700">No similar characters (ex. i, I, l, 0, O)</span>
         </label>
+        <label class="inline-flex items-center mt-3 text-lg">
+            <input
+                v-model="value.uniqueChars"
+                type="checkbox"
+                class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
+                :class="settingsStyles"
+            /><span class="ml-2 text-gray-700">Don't use the same character more than once</span>
+        </label>
     </div>
 </template>
 
