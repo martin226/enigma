@@ -28,14 +28,12 @@
                     "
                 />
                 <img
-                    :src="require('@/assets/svg/' + clipboardSvg)"
-                    class="w-10 h-10 filter invert cursor-pointer"
+                    v-tippy="{ trigger: 'click', arrow: true, wait: copyPassword }"
+                    :content="clipboardTooltip"
+                    src="@/assets/svg/clipboard.svg"
+                    class="w-10 h-10 filter invert cursor-pointer focus:outline-none"
                     alt="clipboard"
                     @dragstart.prevent="dragStart"
-                    @click="
-                        copyPassword();
-                        changeClipboard();
-                    "
                 />
             </div>
         </div>
@@ -61,7 +59,6 @@ import Password from './components/Password.vue';
 import PasswordInfo from './components/PasswordInfo.vue';
 import Settings from './components/Settings.vue';
 import { GeneratePassword } from './lib/generator';
-import copyTextToClipboard from './lib/clipboard';
 
 export default Vue.extend({
     name: 'App',
@@ -84,8 +81,8 @@ export default Vue.extend({
                 score: 4,
             },
             rotateGenerateTimeout: 0,
-            changeClipboardTimeout: 0,
-            clipboardSvg: 'clipboard.svg',
+            clipboardSuccess: false,
+            clipboardTooltip: '',
         };
     },
     computed: {
@@ -113,8 +110,16 @@ export default Vue.extend({
         this.focusPassword();
     },
     methods: {
-        copyPassword() {
-            copyTextToClipboard(this.password);
+        copyPassword(tippy: { show: () => void }) {
+            this.$copyText(this.password).then(
+                () => {
+                    this.clipboardTooltip = 'Copied!';
+                },
+                () => {
+                    this.clipboardTooltip = 'Press CTRL-C to copy';
+                }
+            );
+            tippy.show();
         },
         focusPassword() {
             (this.$refs.password as Vue & { $el: HTMLElement }).$el.focus();
@@ -131,14 +136,6 @@ export default Vue.extend({
                 el.classList.remove('rotate');
                 this.rotateGenerateTimeout = 0;
             }, 200);
-        },
-        changeClipboard() {
-            if (this.changeClipboardTimeout !== 0) return;
-            this.clipboardSvg = 'clipboard-check.svg';
-            this.changeClipboardTimeout = setTimeout(() => {
-                this.clipboardSvg = 'clipboard.svg';
-                this.changeClipboardTimeout = 0;
-            }, 1500);
         },
     },
 });
