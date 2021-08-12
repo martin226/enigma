@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production' ? '/engima/' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/enigma/' : '/',
     pwa: {
         name: 'Enigma',
         themeColor: '#047857',
