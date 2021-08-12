@@ -17,7 +17,7 @@
     "register-service-worker": "^1.7.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^2.6.11",
-    "vue-simple-range-slider": "^0.1.10",
+    "vue-slider-component": "^3.2.14",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {

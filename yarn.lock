@@ -9528,6 +9528,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha1-eGQcSIuObKkadfUR56OzKobl3aA=
 
+vue-class-component@^7.1.0:
+  version "7.2.6"
+  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.2.6.tgz#8471e037b8e4762f5a464686e19e5afc708502e4"
+  integrity sha512-+eaQXVrAm/LldalI272PpDe3+i4mPis0ORiMYxF6Ae4hyuCh15W8Idet7wPUEs4N4YptgFHGys4UrgNQOMyO6w==
+
 vue-cli-plugin-tailwind@~2.0.6:
   version "2.0.6"
   resolved "https://registry.npm.taobao.org/vue-cli-plugin-tailwind/download/vue-cli-plugin-tailwind-2.0.6.tgz#c68d5f00aaae49896cf88d5dd341bcbdc900ee0a"
@@ -9571,10 +9576,20 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-simple-range-slider@^0.1.10:
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/vue-simple-range-slider/-/vue-simple-range-slider-0.1.10.tgz#eb25d29d886e26b11b1b513a1e06e66682411527"
-  integrity sha512-epbO0Nd2/vbvZ06iVAIX7Y2N0u83C6/8K0qgMeZpzwJs5lL0ka0LAdXz7VI8sZ7aafxVLn08uDmu0gX9AIsDfQ==
+vue-property-decorator@^8.0.0:
+  version "8.5.1"
+  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-8.5.1.tgz#571a91cf8d2b507f537d79bf8275af3184572fff"
+  integrity sha512-O6OUN2OMsYTGPvgFtXeBU3jPnX5ffQ9V4I1WfxFQ6dqz6cOUbR3Usou7kgFpfiXDvV7dJQSFcJ5yUPgOtPPm1Q==
+  dependencies:
+    vue-class-component "^7.1.0"
+
+vue-slider-component@^3.2.14:
+  version "3.2.14"
+  resolved "https://registry.yarnpkg.com/vue-slider-component/-/vue-slider-component-3.2.14.tgz#21d61de647cf075e977126cf2b2951ee1cc98b27"
+  integrity sha512-h+1UJi4dtib6gt1GU/KUiHVGW9gqCNxCoqJK4iM9YgFeQu4AQu/wWg56RM5sOUhrbUA043+EqtvDfUtYARe+lQ==
+  dependencies:
+    core-js "^3.6.5"
+    vue-property-decorator "^8.0.0"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.3"

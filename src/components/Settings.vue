@@ -2,11 +2,13 @@
     <div class="flex flex-col">
         <h1 class="text-6xl font-bold mb-6">Settings</h1>
         <label class="text-lg">Length of password/passphrase</label>
-        <VueSimpleRangeSlider
+        <VueSlider
             v-model="value.length"
             :min="1"
             :max="64"
-            :bar-color="barColour"
+            :process-style="{ background: barColour }"
+            tooltip="hover"
+            :tooltip-style="{ background: barColour }"
             class="my-6"
         />
         <label class="inline-flex items-center mt-3 text-lg">
@@ -46,13 +48,13 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import VueSimpleRangeSlider from 'vue-simple-range-slider';
-import 'vue-simple-range-slider/dist/vueSimpleRangeSlider.css';
+import VueSlider from 'vue-slider-component';
+import 'vue-slider-component/theme/default.css';
 
 export default Vue.extend({
     name: 'Settings',
     components: {
-        VueSimpleRangeSlider,
+        VueSlider,
     },
     props: {
         value: {
