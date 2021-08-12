@@ -12,7 +12,7 @@
                 transition-colors
                 duration-500
             "
-            :class="classObject"
+            :class="passwordBackground"
         >
             <Password ref="password" v-model="password" />
             <div class="mt-6 flex flex-row gap-4">
@@ -41,9 +41,10 @@
         </div>
         <div class="grid grid-cols-1 xl:grid-cols-2 p-10 h-full bg-gray-100">
             <div class="p-10">
-                <div v-if="passwordInfo.password !== undefined">
-                    <PasswordInfo :password-info="passwordInfo" />
-                </div>
+                <PasswordInfo
+                    v-if="passwordInfo.password !== undefined"
+                    :password-info="passwordInfo"
+                />
             </div>
             <div class="p-10">
                 <Settings v-model="settings" :strength="passwordInfo.score" />
@@ -88,7 +89,7 @@ export default Vue.extend({
         };
     },
     computed: {
-        classObject(): { [key: string]: boolean } {
+        passwordBackground(): { [key: string]: boolean } {
             const strength = this.passwordInfo.score;
             return {
                 'bg-red-700': strength === 0,
