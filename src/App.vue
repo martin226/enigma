@@ -20,7 +20,7 @@
                     src="@/assets/svg/refresh.svg"
                     class="w-10 h-10 filter invert cursor-pointer"
                     alt="refresh"
-                    @dragstart.prevent="dragStart"
+                    @dragstart.prevent
                     @click="
                         generatePassword();
                         rotateGenerate();
@@ -32,7 +32,7 @@
                     src="@/assets/svg/clipboard.svg"
                     class="w-10 h-10 filter invert cursor-pointer focus:outline-none"
                     alt="clipboard"
-                    @dragstart.prevent="dragStart"
+                    @dragstart.prevent
                 />
             </div>
         </div>
