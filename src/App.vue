@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="flex flex-col h-screen">
+    <div id="app" class="flex flex-col min-h-screen">
         <div
             class="
                 py-16
