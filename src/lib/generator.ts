@@ -3,21 +3,27 @@ const GeneratePassword = (
     upperCase: boolean,
     lowerCase: boolean,
     digits: boolean,
-    specialChars: boolean
+    specialChars: boolean,
+    noSimilarChars: boolean
 ): string => {
     let password = '';
     let chars = '';
     if (upperCase) {
-        chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        chars += 'ABCDEFGHJKLMNPQRSTUVWXYZ';
     }
     if (lowerCase) {
-        chars += 'abcdefghijklmnopqrstuvwxyz';
+        chars += 'abcdefghjkmnpqrstuvwxyz';
     }
     if (digits) {
-        chars += '0123456789';
+        chars += '23456789';
     }
     if (specialChars) {
         chars += '!@#$%^&*()_+=-';
+    }
+    if (!noSimilarChars) {
+        if (upperCase) chars += 'IO';
+        if (lowerCase) chars += 'ilo';
+        if (digits) chars += '01';
     }
     if (chars.length === 0) {
         return password;

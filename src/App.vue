@@ -75,6 +75,7 @@ export default Vue.extend({
                 lowerCase: true,
                 digits: true,
                 specialChars: true,
+                noSimilarChars: true,
             },
             passwordInfo: {
                 score: 4,
@@ -124,8 +125,16 @@ export default Vue.extend({
             (this.$refs.password as Vue & { $el: HTMLElement }).$el.focus();
         },
         generatePassword() {
-            const { length, upperCase, lowerCase, digits, specialChars } = this.settings;
-            this.password = GeneratePassword(length, upperCase, lowerCase, digits, specialChars);
+            const { length, upperCase, lowerCase, digits, specialChars, noSimilarChars } =
+                this.settings;
+            this.password = GeneratePassword(
+                length,
+                upperCase,
+                lowerCase,
+                digits,
+                specialChars,
+                noSimilarChars
+            );
         },
         rotateGenerate() {
             if (this.rotateGenerateTimeout !== 0) return;

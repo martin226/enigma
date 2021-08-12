@@ -43,6 +43,14 @@
                 :class="settingsStyles"
             /><span class="ml-2 text-gray-700">Symbols</span>
         </label>
+        <label class="inline-flex items-center mt-3 text-lg">
+            <input
+                v-model="value.noSimilarChars"
+                type="checkbox"
+                class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
+                :class="settingsStyles"
+            /><span class="ml-2 text-gray-700">No similar characters (ex. i, I, l, 0, O)</span>
+        </label>
     </div>
 </template>
 
