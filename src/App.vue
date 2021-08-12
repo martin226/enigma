@@ -40,13 +40,13 @@
             </div>
         </div>
         <div class="grid grid-cols-1 xl:grid-cols-2 p-10 h-full bg-gray-100">
-            <div>
+            <div class="p-10">
                 <div v-if="passwordInfo.password !== undefined">
                     <PasswordInfo :password-info="passwordInfo" />
                 </div>
             </div>
-            <div>
-                <!-- TODO -->
+            <div class="p-10">
+                <Settings v-model="settings" :strength="passwordInfo.score" />
             </div>
         </div>
     </div>
@@ -58,6 +58,7 @@ import zxcvbn from 'zxcvbn';
 import debounce from 'lodash.debounce';
 import Password from './components/Password.vue';
 import PasswordInfo from './components/PasswordInfo.vue';
+import Settings from './components/Settings.vue';
 import { GeneratePassword } from './lib/generator';
 import copyTextToClipboard from './lib/clipboard';
 
@@ -66,15 +67,18 @@ export default Vue.extend({
     components: {
         Password,
         PasswordInfo,
+        Settings,
     },
     data() {
         return {
             password: '',
-            length: 16,
-            upperCase: true,
-            lowerCase: true,
-            digits: true,
-            specialChars: true,
+            settings: {
+                length: 16,
+                upperCase: true,
+                lowerCase: true,
+                digits: true,
+                specialChars: true,
+            },
             passwordInfo: {
                 score: 4,
             },
@@ -115,13 +119,8 @@ export default Vue.extend({
             (this.$refs.password as Vue & { $el: HTMLElement }).$el.focus();
         },
         generatePassword() {
-            this.password = GeneratePassword(
-                this.length,
-                this.upperCase,
-                this.lowerCase,
-                this.digits,
-                this.specialChars
-            );
+            const { length, upperCase, lowerCase, digits, specialChars } = this.settings;
+            this.password = GeneratePassword(length, upperCase, lowerCase, digits, specialChars);
         },
         rotateGenerate() {
             if (this.rotateGenerateTimeout !== 0) return;
