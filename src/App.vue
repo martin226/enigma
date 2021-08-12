@@ -21,6 +21,7 @@
                     src="@/assets/svg/refresh.svg"
                     class="w-10 h-10 filter invert cursor-pointer"
                     alt="refresh"
+                    @dragstart.prevent="dragStart"
                     @click="
                         generatePassword();
                         rotateGenerate();
@@ -30,6 +31,7 @@
                     :src="require('@/assets/svg/' + clipboardSvg)"
                     class="w-10 h-10 filter invert cursor-pointer"
                     alt="clipboard"
+                    @dragstart.prevent="dragStart"
                     @click="
                         copyPassword();
                         changeClipboard();

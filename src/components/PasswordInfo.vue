@@ -10,12 +10,14 @@
                                 src="@/assets/svg/sad.svg"
                                 class="h-8 w-8 text-indigo-900 mr-2 cursor-pointer"
                                 alt="sad"
+                                @dragstart.prevent="dragStart"
                             />
                             <img
                                 v-else
                                 src="@/assets/svg/happy.svg"
                                 class="h-8 w-8 text-indigo-900 mr-2 cursor-pointer"
                                 alt="happy"
+                                @dragstart.prevent="dragStart"
                             />
                         </div>
                         <p class="px-6 py-4 text-indigo-900 font-semibold text-2xl">
@@ -52,6 +54,7 @@
                                 src="@/assets/svg/x-circle.svg"
                                 class="h-8 w-8 text-red-900 mr-2 cursor-pointer"
                                 alt="x-circle"
+                                @dragstart.prevent="dragStart"
                             />
                         </div>
                         <p class="px-6 py-4 text-red-900 font-semibold text-2xl">Warning</p>
@@ -72,6 +75,7 @@
                                 src="@/assets/svg/information.svg"
                                 class="h-8 w-8 text-yellow-900 mr-2 cursor-pointer"
                                 alt="information"
+                                @dragstart.prevent="dragStart"
                             />
                         </div>
                         <p class="px-6 py-4 text-yellow-900 font-semibold text-2xl">
@@ -116,6 +120,7 @@
                                 src="@/assets/svg/checkmark.svg"
                                 class="h-8 w-8 text-green-900 mr-2 cursor-pointer"
                                 alt="checkmark"
+                                @dragstart.prevent="dragStart"
                             />
                         </div>
                         <p class="px-6 py-4 text-green-900 font-semibold text-2xl">
