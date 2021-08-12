@@ -19,6 +19,9 @@ const GeneratePassword = (
     if (specialChars) {
         chars += '!@#$%^&*()_+=-';
     }
+    if (chars.length === 0) {
+        return password;
+    }
     for (let i = 0; i < length; i += 1) {
         password += chars[Math.floor(Math.random() * chars.length)];
     }
