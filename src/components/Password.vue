@@ -15,6 +15,7 @@
             outline-none
             font-bold
             focus:bg-transparent focus:border-none focus:outline-none
+            overflow-ellipsis
         "
         @input="$emit('input', $event.target.value)"
     />
