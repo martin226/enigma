@@ -15,21 +15,24 @@
             :class="classObject"
         >
             <Password ref="password" v-model="password" />
-            <div class="mt-6">
-                <Btn
-                    class="bg-white text-gray-800 hover:bg-gray-300"
-                    text="Generate"
-                    @click.native="
+            <div class="mt-6 flex flex-row gap-4">
+                <img
+                    ref="generate"
+                    src="@/assets/svg/refresh.svg"
+                    class="w-10 h-10 filter invert cursor-pointer"
+                    alt="refresh"
+                    @click="
                         generatePassword();
-                        bounceAnimation($event);
+                        rotateGenerate();
                     "
                 />
-                <Btn
-                    class="bg-white text-gray-800 hover:bg-gray-300"
-                    text="Copy"
-                    @click.native="
+                <img
+                    :src="require('@/assets/svg/' + clipboardSvg)"
+                    class="w-10 h-10 filter invert cursor-pointer"
+                    alt="clipboard"
+                    @click="
                         copyPassword();
-                        bounceAnimation($event);
+                        changeClipboard();
                     "
                 />
             </div>
@@ -51,7 +54,6 @@
 import Vue from 'vue';
 import zxcvbn from 'zxcvbn';
 import debounce from 'lodash.debounce';
-import Btn from './components/Button.vue';
 import Password from './components/Password.vue';
 import PasswordInfo from './components/PasswordInfo.vue';
 import { GeneratePassword } from './lib/generator';
@@ -60,7 +62,6 @@ import copyTextToClipboard from './lib/clipboard';
 export default Vue.extend({
     name: 'App',
     components: {
-        Btn,
         Password,
         PasswordInfo,
     },
@@ -75,6 +76,9 @@ export default Vue.extend({
             passwordInfo: {
                 score: 4,
             },
+            rotateGenerateTimeout: 0,
+            changeClipboardTimeout: 0,
+            clipboardSvg: 'clipboard.svg',
         };
     },
     computed: {
@@ -117,36 +121,49 @@ export default Vue.extend({
                 this.specialChars
             );
         },
-        bounceAnimation(event: Event) {
-            if (!event) return;
-            const el = event.target as HTMLElement;
-            el.classList.add('bounce');
-            setTimeout(() => el.classList.remove('bounce'), 1000);
+        rotateGenerate() {
+            if (this.rotateGenerateTimeout !== 0) return;
+            const el = this.$refs.generate as HTMLElement;
+            el.classList.add('rotate');
+            this.rotateGenerateTimeout = setTimeout(() => {
+                el.classList.remove('rotate');
+                this.rotateGenerateTimeout = 0;
+            }, 200);
+        },
+        changeClipboard() {
+            if (this.changeClipboardTimeout !== 0) return;
+            this.clipboardSvg = 'clipboard-check.svg';
+            this.changeClipboardTimeout = setTimeout(() => {
+                this.clipboardSvg = 'clipboard.svg';
+                this.changeClipboardTimeout = 0;
+            }, 1500);
         },
     },
 });
 </script>
 
 <style scoped>
-@keyframes bounce {
-    0% {
-        -webkit-transform: translateY(0px);
-    }
-    30% {
-        -webkit-transform: translateY(-20px);
-    }
-    60% {
-        -webkit-transform: translateY(0px);
-    }
-    70% {
-        -webkit-transform: translateY(-5px);
-    }
+@-moz-keyframes rotate {
     100% {
-        -webkit-transform: translateY(0);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
-
-.bounce {
-    animation: bounce 0.8s ease-in-out;
+@-webkit-keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+.rotate {
+    -webkit-animation: rotate 0.2s ease-in-out;
+    -moz-animation: rotate 0.2s ease-in-out;
+    animation: rotate 0.2s ease-in-out;
 }
 </style>
