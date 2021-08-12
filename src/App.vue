@@ -77,6 +77,7 @@ export default Vue.extend({
                 specialChars: true,
                 noSimilarChars: true,
                 uniqueChars: true,
+                noSequentialChars: true,
             },
             passwordInfo: {
                 score: 4,
@@ -134,6 +135,7 @@ export default Vue.extend({
                 specialChars,
                 noSimilarChars,
                 uniqueChars,
+                noSequentialChars,
             } = this.settings;
             this.password = GeneratePassword(
                 length,
@@ -142,7 +144,8 @@ export default Vue.extend({
                 digits,
                 specialChars,
                 noSimilarChars,
-                uniqueChars
+                uniqueChars,
+                noSequentialChars
             );
         },
         rotateGenerate() {

@@ -59,6 +59,14 @@
                 :class="settingsStyles"
             /><span class="ml-2 text-gray-700">Don't use the same character more than once</span>
         </label>
+        <label class="inline-flex items-center mt-3 text-lg">
+            <input
+                v-model="value.noSequentialChars"
+                type="checkbox"
+                class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
+                :class="settingsStyles"
+            /><span class="ml-2 text-gray-700">Don't use sequential characters (ex. 123)</span>
+        </label>
     </div>
 </template>
 

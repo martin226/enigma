@@ -1,3 +1,17 @@
+const isSequential = (charOne: string, charTwo: string): boolean => {
+    const charCodeOne = charOne.charCodeAt(0);
+    const charCodeTwo = charTwo.charCodeAt(0);
+    if (
+        charCodeTwo - charCodeOne === 1 &&
+        ((charCodeOne >= 48 && charCodeOne <= 56) ||
+            (charCodeOne >= 65 && charCodeOne <= 89) ||
+            (charCodeOne >= 97 && charCodeOne <= 121))
+    ) {
+        return true;
+    }
+    return false;
+};
+
 const GeneratePassword = (
     length: number,
     upperCase: boolean,
@@ -5,7 +19,8 @@ const GeneratePassword = (
     digits: boolean,
     specialChars: boolean,
     noSimilarChars: boolean,
-    uniqueChars: boolean
+    uniqueChars: boolean,
+    noSequentialChars: boolean
 ): string => {
     let password = '';
     let chars = '';
@@ -40,6 +55,14 @@ const GeneratePassword = (
                     password += char;
                     break;
                 }
+            }
+        }
+        if (noSequentialChars && password.length >= 2) {
+            const lastChar = password.charAt(password.length - 1);
+            const secondLastChar = password.charAt(password.length - 2);
+            if (isSequential(secondLastChar, lastChar)) {
+                password = password.substr(0, password.length - 1);
+                i -= 1;
             }
         }
     }
