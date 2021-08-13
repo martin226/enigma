@@ -19,7 +19,7 @@
                     ref="generate"
                     src="@/assets/svg/refresh.svg"
                     class="w-10 h-10 filter invert cursor-pointer"
-                    alt="refresh"
+                    alt="Generate password"
                     @dragstart.prevent
                     @click="
                         generatePassword();
@@ -31,7 +31,7 @@
                     :content="clipboardTooltip"
                     src="@/assets/svg/clipboard.svg"
                     class="w-10 h-10 filter invert cursor-pointer focus:outline-none"
-                    alt="clipboard"
+                    alt="Copy to clipboard"
                     @dragstart.prevent
                 />
             </div>

@@ -17,14 +17,14 @@
                                 v-if="passwordInfo.score < 3"
                                 src="@/assets/svg/sad.svg"
                                 class="h-8 w-8 mr-2 cursor-pointer dark:filter dark:invert"
-                                alt="sad"
+                                alt="Sad face"
                                 @dragstart.prevent
                             />
                             <img
                                 v-else
                                 src="@/assets/svg/happy.svg"
                                 class="h-8 w-8 mr-2 cursor-pointer dark:filter dark:invert"
-                                alt="happy"
+                                alt="Happy face"
                                 @dragstart.prevent
                             />
                         </div>
@@ -73,7 +73,7 @@
                             <img
                                 src="@/assets/svg/x-circle.svg"
                                 class="h-8 w-8 mr-2 cursor-pointer dark:filter dark:invert"
-                                alt="x-circle"
+                                alt="Circle with X"
                                 @dragstart.prevent
                             />
                         </div>
@@ -104,7 +104,7 @@
                             <img
                                 src="@/assets/svg/information.svg"
                                 class="h-8 w-8 mr-2 cursor-pointer dark:filter dark:invert"
-                                alt="information"
+                                alt="Information"
                                 @dragstart.prevent
                             />
                         </div>
@@ -166,7 +166,7 @@
                             <img
                                 src="@/assets/svg/checkmark.svg"
                                 class="h-8 w-8 mr-2 cursor-pointer dark:filter dark:invert"
-                                alt="checkmark"
+                                alt="Checkmark"
                                 @dragstart.prevent
                             />
                         </div>
