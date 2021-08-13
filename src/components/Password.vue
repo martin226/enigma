@@ -1,5 +1,7 @@
 <template>
     <input
+        v-tippy="{ followCursor: true, arrow: true }"
+        content="Click to edit!"
         :type="showPassword ? 'text' : 'password'"
         spellcheck="false"
         placeholder="Enter a password"
@@ -16,6 +18,7 @@
             font-bold
             focus:bg-transparent focus:border-none focus:outline-none
             overflow-ellipsis
+            cursor-pointer
         "
         @input="$emit('input', $event.target.value)"
     />
