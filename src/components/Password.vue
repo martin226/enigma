@@ -1,6 +1,6 @@
 <template>
     <input
-        type="text"
+        :type="showPassword ? 'text' : 'password'"
         spellcheck="false"
         placeholder="Enter a password"
         :value="value"
@@ -29,6 +29,10 @@ export default Vue.extend({
     props: {
         value: {
             type: String,
+            required: true,
+        },
+        showPassword: {
+            type: Boolean,
             required: true,
         },
     },

@@ -13,7 +13,7 @@
             "
             :class="passwordBackground"
         >
-            <Password ref="password" v-model="password" />
+            <Password ref="password" v-model="password" :show-password="showPassword" />
             <div class="mt-6 flex flex-row gap-4">
                 <img
                     ref="generate"
@@ -33,6 +33,17 @@
                     class="w-10 h-10 filter invert cursor-pointer focus:outline-none"
                     alt="Copy to clipboard"
                     @dragstart.prevent
+                />
+                <img
+                    :src="
+                        showPassword
+                            ? require('@/assets/svg/eye.svg')
+                            : require('@/assets/svg/eye-off.svg')
+                    "
+                    class="w-10 h-10 filter invert cursor-pointer focus:outline-none"
+                    alt="Toggle password visibility"
+                    @dragstart.prevent
+                    @click="showPassword = !showPassword"
                 />
             </div>
         </div>
@@ -85,6 +96,7 @@ export default Vue.extend({
             rotateGenerateTimeout: 0,
             clipboardSuccess: false,
             clipboardTooltip: '',
+            showPassword: true,
         };
     },
     computed: {
