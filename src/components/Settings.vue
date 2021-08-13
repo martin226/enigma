@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col dark:text-gray-50">
         <h1 class="text-6xl font-bold mb-6">Settings</h1>
         <label class="text-lg">Length of password/passphrase</label>
         <VueSlider
@@ -17,7 +17,7 @@
                 type="checkbox"
                 class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
                 :class="settingsStyles"
-            /><span class="ml-2 text-gray-700">Uppercase</span>
+            /><span class="ml-2">Uppercase</span>
         </label>
         <label class="inline-flex items-center mt-3 text-lg">
             <input
@@ -25,7 +25,7 @@
                 type="checkbox"
                 class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
                 :class="settingsStyles"
-            /><span class="ml-2 text-gray-700">Lowercase</span>
+            /><span class="ml-2">Lowercase</span>
         </label>
         <label class="inline-flex items-center mt-3 text-lg">
             <input
@@ -33,7 +33,7 @@
                 type="checkbox"
                 class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
                 :class="settingsStyles"
-            /><span class="ml-2 text-gray-700">Numbers</span>
+            /><span class="ml-2">Numbers</span>
         </label>
         <label class="inline-flex items-center mt-3 text-lg">
             <input
@@ -41,7 +41,7 @@
                 type="checkbox"
                 class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
                 :class="settingsStyles"
-            /><span class="ml-2 text-gray-700">Symbols</span>
+            /><span class="ml-2">Symbols</span>
         </label>
         <label class="inline-flex items-center mt-3 text-lg">
             <input
@@ -49,7 +49,7 @@
                 type="checkbox"
                 class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
                 :class="settingsStyles"
-            /><span class="ml-2 text-gray-700">No similar characters (ex. i, I, l, 0, O)</span>
+            /><span class="ml-2">No similar characters (ex. i, I, l, 0, O)</span>
         </label>
         <label class="inline-flex items-center mt-3 text-lg">
             <input
@@ -57,7 +57,7 @@
                 type="checkbox"
                 class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
                 :class="settingsStyles"
-            /><span class="ml-2 text-gray-700">Don't use the same character more than once</span>
+            /><span class="ml-2">Don't use the same character more than once</span>
         </label>
         <label class="inline-flex items-center mt-3 text-lg">
             <input
@@ -65,7 +65,7 @@
                 type="checkbox"
                 class="form-checkbox h-5 w-5 focus:ring-1 focus:ring-current"
                 :class="settingsStyles"
-            /><span class="ml-2 text-gray-700">Don't use sequential characters (ex. 123)</span>
+            /><span class="ml-2">Don't use sequential characters (ex. 123)</span>
         </label>
     </div>
 </template>

@@ -36,7 +36,7 @@
                 />
             </div>
         </div>
-        <div class="grid grid-cols-1 xl:grid-cols-2 p-10 flex-1 bg-gray-100">
+        <div class="grid grid-cols-1 xl:grid-cols-2 p-10 flex-1 bg-gray=100 dark:bg-gray-800">
             <div class="p-10">
                 <PasswordInfo
                     v-if="passwordInfo.password !== undefined"
