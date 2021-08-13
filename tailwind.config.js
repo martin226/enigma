@@ -11,6 +11,7 @@ module.exports = {
         extend: {
             filter: ['dark'],
             invert: ['dark'],
+            display: ['dark'],
         },
     },
     plugins: [

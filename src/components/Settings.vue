@@ -24,7 +24,7 @@
                         cursor-pointer
                     "
                 >
-                    <span class="inline dark:hidden">🌞</span>
+                    <span class="inline dark:hidden select-none">🌞</span>
                     <span
                         class="
                             w-6
@@ -37,7 +37,7 @@
                             dark:float-left
                         "
                     ></span>
-                    <span class="hidden dark:inline">🌛</span>
+                    <span class="hidden dark:inline select-none">🌛</span>
                 </label>
             </div>
         </div>
