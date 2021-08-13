@@ -1,6 +1,46 @@
 <template>
     <div class="flex flex-col dark:text-gray-50">
-        <h1 class="text-6xl font-bold mb-6">Settings</h1>
+        <div class="flex flex-row items-center justify-between">
+            <h1 class="text-6xl font-bold mb-6">Settings</h1>
+            <div class="w-14 h-8 mt-5 mx-auto sm:m-0">
+                <input
+                    id="dark-mode-toggle"
+                    type="checkbox"
+                    class="hidden"
+                    onchange="document.documentElement.classList.toggle('dark')"
+                    @change="toggleTheme()"
+                />
+                <label
+                    for="dark-mode-toggle"
+                    class="
+                        w-full
+                        h-full
+                        bg-gray-800
+                        dark:bg-white
+                        rounded-full
+                        p-1
+                        flex
+                        justify-between
+                        cursor-pointer
+                    "
+                >
+                    <span class="inline dark:hidden">🌞</span>
+                    <span
+                        class="
+                            w-6
+                            h-6
+                            rounded-full
+                            bg-white
+                            dark:bg-gray-800
+                            block
+                            float-right
+                            dark:float-left
+                        "
+                    ></span>
+                    <span class="hidden dark:inline">🌛</span>
+                </label>
+            </div>
+        </div>
         <label class="text-lg">Length of password/passphrase</label>
         <VueSlider
             v-model="value.length"
@@ -124,6 +164,15 @@ export default Vue.extend({
                     break;
             }
             return colour;
+        },
+    },
+    methods: {
+        toggleTheme() {
+            if (localStorage.theme === 'dark') {
+                localStorage.theme = 'light';
+            } else if (localStorage.theme === 'light') {
+                localStorage.theme = 'dark';
+            }
         },
     },
 });

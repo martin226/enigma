@@ -108,6 +108,7 @@ export default Vue.extend({
         },
     },
     mounted() {
+        this.setTheme();
         this.generatePassword();
         this.focusPassword();
     },
@@ -156,6 +157,20 @@ export default Vue.extend({
                 el.classList.remove('rotate');
                 this.rotateGenerateTimeout = 0;
             }, 200);
+        },
+        setTheme() {
+            if (!['dark', 'light'].includes(localStorage.theme)) {
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    localStorage.theme = 'dark';
+                } else {
+                    localStorage.theme = 'light';
+                }
+            }
+            if (localStorage.theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
         },
     },
 });
