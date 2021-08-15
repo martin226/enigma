@@ -41,7 +41,7 @@ const GeneratePassword = (
         if (lowerCase) chars += 'ilo';
         if (digits) chars += '01';
     }
-    if (chars.length === 0) {
+    if (chars.length === 0 || (length > chars.length && uniqueChars)) {
         return password;
     }
     for (let i = 0; i < length; i += 1) {
