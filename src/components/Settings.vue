@@ -41,7 +41,7 @@
                 </label>
             </div>
         </div>
-        <label class="text-lg">Length of password/passphrase</label>
+        <label class="text-lg">Length of password</label>
         <VueSlider
             v-model="value.length"
             :min="1"

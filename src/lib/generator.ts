@@ -69,9 +69,4 @@ const GeneratePassword = (
     return password;
 };
 
-const GeneratePassphrase = (): string => {
-    // TODO: Generate a passphrase
-    return '';
-};
-
-export { GeneratePassword, GeneratePassphrase };
+export default GeneratePassword;

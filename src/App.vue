@@ -68,7 +68,7 @@ import debounce from 'lodash.debounce';
 import Password from './components/Password.vue';
 import PasswordInfo from './components/PasswordInfo.vue';
 import Settings from './components/Settings.vue';
-import { GeneratePassword } from './lib/generator';
+import GeneratePassword from './lib/generator';
 
 export default Vue.extend({
     name: 'App',
