@@ -12,30 +12,11 @@
                 />
                 <label
                     for="dark-mode-toggle"
-                    class="
-                        w-full
-                        h-full
-                        bg-gray-800
-                        dark:bg-white
-                        rounded-full
-                        p-1
-                        flex
-                        justify-between
-                        cursor-pointer
-                    "
+                    class="w-full h-full bg-gray-800 dark:bg-white rounded-full p-1 flex justify-between cursor-pointer"
                 >
                     <span class="inline dark:hidden select-none">🌞</span>
                     <span
-                        class="
-                            w-6
-                            h-6
-                            rounded-full
-                            bg-white
-                            dark:bg-gray-800
-                            block
-                            float-right
-                            dark:float-left
-                        "
+                        class="w-6 h-6 rounded-full bg-white dark:bg-gray-800 block float-right dark:float-left"
                     ></span>
                     <span class="hidden dark:inline select-none">🌛</span>
                 </label>
@@ -116,7 +97,7 @@ import VueSlider from 'vue-slider-component';
 import 'vue-slider-component/theme/default.css';
 
 export default Vue.extend({
-    name: 'Settings',
+    name: 'PasswordSettings',
     components: {
         VueSlider,
     },

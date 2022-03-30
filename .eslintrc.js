@@ -19,5 +19,9 @@ module.exports = {
     rules: {
         'no-console': 'off',
         'no-debugger': 'off',
+        'vuejs-accessibility/form-control-has-label': 'off',
+        'vuejs-accessibility/label-has-for': 'off',
+        'vuejs-accessibility/click-events-have-key-events': 'off',
+        'vue/no-mutating-props': 'off',
     },
 };

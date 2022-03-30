@@ -1,19 +1,10 @@
 <template>
     <div id="app" class="flex flex-col min-h-screen">
         <div
-            class="
-                py-16
-                flex flex-col
-                gap-4
-                justify-center
-                items-center
-                text-white text-center
-                transition-colors
-                duration-500
-            "
+            class="py-16 flex flex-col gap-4 justify-center items-center text-white text-center transition-colors duration-500"
             :class="passwordBackground"
         >
-            <Password ref="password" v-model="password" :show-password="showPassword" />
+            <PasswordInput ref="password" v-model="password" :show-password="showPassword" />
             <div class="mt-6 flex flex-row gap-4">
                 <img
                     ref="generate"
@@ -55,7 +46,7 @@
                 />
             </div>
             <div class="p-10">
-                <Settings v-model="settings" :strength="passwordInfo.score" />
+                <PasswordSettings v-model="settings" :strength="passwordInfo.score" />
             </div>
         </div>
     </div>
@@ -65,17 +56,17 @@
 import Vue from 'vue';
 import zxcvbn from 'zxcvbn';
 import debounce from 'lodash.debounce';
-import Password from './components/Password.vue';
+import PasswordInput from './components/PasswordInput.vue';
 import PasswordInfo from './components/PasswordInfo.vue';
-import Settings from './components/Settings.vue';
+import PasswordSettings from './components/PasswordSettings.vue';
 import GeneratePassword from './lib/generator';
 
 export default Vue.extend({
     name: 'App',
     components: {
-        Password,
+        PasswordInput,
         PasswordInfo,
-        Settings,
+        PasswordSettings,
     },
     data() {
         return {

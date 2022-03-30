@@ -1,13 +1,7 @@
 <template>
     <div>
         <div
-            class="
-                bg-indigo-50
-                dark:bg-indigo-800
-                border-l-8 border-indigo-900
-                mb-2
-                dark:bg-opacity-10
-            "
+            class="bg-indigo-50 dark:bg-indigo-800 border-l-8 border-indigo-900 mb-2 dark:bg-opacity-10"
         >
             <div class="flex items-center">
                 <div class="p-2">
@@ -29,14 +23,7 @@
                             />
                         </div>
                         <p
-                            class="
-                                px-6
-                                py-4
-                                text-indigo-900
-                                dark:text-indigo-50
-                                font-semibold
-                                text-2xl
-                            "
+                            class="px-6 py-4 text-indigo-900 dark:text-indigo-50 font-semibold text-2xl"
                         >
                             Password Score: {{ passwordInfo.score }}/4
                         </p>
@@ -89,13 +76,7 @@
         </div>
 
         <div
-            class="
-                bg-yellow-50
-                dark:bg-yellow-800
-                border-l-8 border-yellow-900
-                mb-2
-                dark:bg-opacity-10
-            "
+            class="bg-yellow-50 dark:bg-yellow-800 border-l-8 border-yellow-900 mb-2 dark:bg-opacity-10"
         >
             <div class="flex items-center">
                 <div class="p-2">
@@ -109,14 +90,7 @@
                             />
                         </div>
                         <p
-                            class="
-                                px-6
-                                py-4
-                                text-yellow-900
-                                dark:text-yellow-50
-                                font-semibold
-                                text-2xl
-                            "
+                            class="px-6 py-4 text-yellow-900 dark:text-yellow-50 font-semibold text-2xl"
                         >
                             Time to crack
                         </p>
@@ -151,13 +125,7 @@
         </div>
 
         <div
-            class="
-                bg-green-50
-                dark:bg-green-800
-                border-l-8 border-green-900
-                mb-2
-                dark:bg-opacity-10
-            "
+            class="bg-green-50 dark:bg-green-800 border-l-8 border-green-900 mb-2 dark:bg-opacity-10"
         >
             <div class="flex items-center">
                 <div class="p-2">
@@ -171,29 +139,14 @@
                             />
                         </div>
                         <p
-                            class="
-                                px-6
-                                py-4
-                                text-green-900
-                                dark:text-green-50
-                                font-semibold
-                                text-2xl
-                            "
+                            class="px-6 py-4 text-green-900 dark:text-green-50 font-semibold text-2xl"
                         >
                             Try the following suggestions!
                         </p>
                     </div>
                     <ul
                         v-if="passwordInfo.feedback.suggestions.length > 0"
-                        class="
-                            px-16
-                            mb-4
-                            list-disc
-                            text-lg
-                            font-bold
-                            text-green-500
-                            dark:text-green-200
-                        "
+                        class="px-16 mb-4 list-disc text-lg font-bold text-green-500 dark:text-green-200"
                     >
                         <li
                             v-for="suggestion in passwordInfo.feedback.suggestions"
